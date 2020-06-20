@@ -134,9 +134,9 @@ CONTRACTION_MAP = {
 "you've": "you have"
 }
 
-data = pd.read_csv('twitter_dataset.csv')
-content = data['content']
-labels = data['sentiment']
+data = pd.read_csv('train.csv')
+content = data['Content']
+labels = data['Sentiment']
 nlp = spacy.load('en_core_web_sm', parse = False, tag=False, entity=False)
 
 #make all lowercase
@@ -227,7 +227,7 @@ def main():
 		new_content.append(i)
 	new_dict = list(zip(new_content,labels))
 	df = pd.DataFrame(new_dict,columns = ['content','sentiment'])
-	df.to_csv('updated_dataset.csv', index = False)
+	df.to_csv('processed_train.csv', index = False)
 	
 	
 
